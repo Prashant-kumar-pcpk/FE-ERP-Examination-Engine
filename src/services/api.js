@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: '/api',
+  baseURL: 'https://be-erp-examination-engine.onrender.com/api',
   headers: {
     'Content-Type': 'application/json'
   }
