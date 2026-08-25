@@ -22,18 +22,18 @@ const QuestionNavigator = ({
   const unansweredCount = questions.length - answeredCount;
 
   return (
-    <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-5 flex flex-col h-full">
-      <div className="flex items-center justify-between pb-3 border-b border-slate-100 mb-4">
-        <h3 className="font-bold text-slate-800 text-sm tracking-wide uppercase">
+    <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-3.5 sm:p-5 flex flex-col w-full min-w-0">
+      <div className="flex items-center justify-between pb-3 border-b border-slate-100 mb-3 sm:mb-4">
+        <h3 className="font-bold text-slate-800 text-xs sm:text-sm tracking-wide uppercase">
           Question Navigator
         </h3>
-        <span className="text-xs font-semibold text-slate-500">
+        <span className="text-[11px] sm:text-xs font-semibold text-slate-500">
           {answeredCount} / {questions.length} Answered
         </span>
       </div>
 
       {/* Question Number Grid */}
-      <div className="grid grid-cols-5 gap-2.5 mb-6 overflow-y-auto max-h-64 p-1">
+      <div className="grid grid-cols-5 xs:grid-cols-6 sm:grid-cols-8 lg:grid-cols-5 gap-1.5 sm:gap-2 mb-4 sm:mb-6 overflow-y-auto max-h-56 sm:max-h-64 p-1">
         {questions.map((q, idx) => {
           const qId = q._id;
           const isCurrent = idx === currentIndex;
@@ -52,7 +52,7 @@ const QuestionNavigator = ({
           }
 
           if (isCurrent) {
-            buttonClasses += ' ring-2 ring-indigo-600 ring-offset-2 scale-105';
+            buttonClasses += ' ring-2 ring-indigo-600 ring-offset-1 sm:ring-offset-2 scale-105';
           }
 
           return (
@@ -60,7 +60,7 @@ const QuestionNavigator = ({
               key={qId}
               type="button"
               onClick={() => onSelectQuestion(idx)}
-              className={`relative h-10 w-full rounded-xl border flex items-center justify-center text-sm font-semibold transition-all duration-150 ${buttonClasses}`}
+              className={`relative h-9 sm:h-10 w-full rounded-lg sm:rounded-xl border flex items-center justify-center text-xs sm:text-sm font-semibold transition-all duration-150 ${buttonClasses}`}
             >
               {idx + 1}
               {isReviewed && (
@@ -72,10 +72,10 @@ const QuestionNavigator = ({
       </div>
 
       {/* Legend */}
-      <div className="space-y-2 pt-3 border-t border-slate-100 text-xs font-medium text-slate-600 mb-6">
+      <div className="space-y-1.5 sm:space-y-2 pt-3 border-t border-slate-100 text-xs font-medium text-slate-600 mb-4 sm:mb-6">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <div className="w-3 h-3 rounded-md bg-emerald-500" />
+            <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-sm sm:rounded-md bg-emerald-500 flex-shrink-0" />
             <span>Answered</span>
           </div>
           <span className="font-bold text-slate-800">{answeredCount}</span>
@@ -83,7 +83,7 @@ const QuestionNavigator = ({
 
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <div className="w-3 h-3 rounded-md bg-slate-200" />
+            <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-sm sm:rounded-md bg-slate-200 flex-shrink-0" />
             <span>Unanswered</span>
           </div>
           <span className="font-bold text-slate-800">{unansweredCount}</span>
@@ -91,7 +91,7 @@ const QuestionNavigator = ({
 
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <div className="w-3 h-3 rounded-md bg-purple-600" />
+            <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-sm sm:rounded-md bg-purple-600 flex-shrink-0" />
             <span>Marked for Review</span>
           </div>
           <span className="font-bold text-slate-800">{reviewCount}</span>
@@ -103,7 +103,7 @@ const QuestionNavigator = ({
         <button
           type="button"
           onClick={onSubmitClick}
-          className="w-full flex items-center justify-center gap-2 py-3 px-4 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-sm rounded-xl shadow-md shadow-emerald-200 transition-all active:scale-[0.99]"
+          className="w-full flex items-center justify-center gap-2 py-2.5 sm:py-3 px-4 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-sm rounded-xl shadow-md shadow-emerald-200 transition-all active:scale-[0.99]"
         >
           <Send className="w-4 h-4" />
           Submit Exam

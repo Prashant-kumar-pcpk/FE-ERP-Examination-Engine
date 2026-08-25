@@ -66,15 +66,15 @@ const Timer = ({ initialSeconds, onExpire }) => {
 
   return (
     <div
-      className={`inline-flex items-center gap-2.5 px-4 py-2 rounded-xl border font-mono font-bold text-base md:text-lg shadow-sm transition-all ${timerClasses}`}
+      className={`inline-flex items-center gap-1.5 sm:gap-2.5 px-2.5 sm:px-4 py-1.5 sm:py-2 rounded-xl border font-mono font-bold text-sm sm:text-base md:text-lg shadow-sm transition-all flex-shrink-0 ${timerClasses}`}
     >
       {isUrgent ? (
-        <AlertTriangle className={`w-5 h-5 ${iconColor}`} />
+        <AlertTriangle className={`w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0 ${iconColor}`} />
       ) : (
-        <TimerIcon className={`w-5 h-5 ${iconColor}`} />
+        <TimerIcon className={`w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0 ${iconColor}`} />
       )}
-      <span>{formatSeconds(secondsLeft)}</span>
-      <span className="text-[11px] font-sans font-medium uppercase tracking-wider opacity-75">
+      <span className="tabular-nums">{formatSeconds(secondsLeft)}</span>
+      <span className="text-[10px] sm:text-[11px] font-sans font-medium uppercase tracking-wider opacity-75 hidden xs:inline sm:inline">
         Remaining
       </span>
     </div>

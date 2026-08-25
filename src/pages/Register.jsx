@@ -55,17 +55,17 @@ const Register = () => {
         </div>
 
         {/* Register Card */}
-        <div className="bg-white/95 backdrop-blur-md rounded-3xl p-6 sm:p-8 shadow-2xl border border-slate-800/10">
+        <div className="bg-white/95 backdrop-blur-md rounded-2xl sm:rounded-3xl p-5 sm:p-8 shadow-2xl border border-slate-800/10 min-w-0">
           {error && (
-            <div className="mb-5 p-3.5 bg-rose-50 border border-rose-200 text-rose-700 text-sm rounded-xl font-medium flex items-center gap-2">
+            <div className="mb-5 p-3.5 bg-rose-50 border border-rose-200 text-rose-700 text-sm rounded-xl font-medium flex items-center gap-2 break-words">
               <span className="w-2 h-2 rounded-full bg-rose-500 flex-shrink-0" />
-              {error}
+              <span>{error}</span>
             </div>
           )}
 
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
-              <label className="pl-2 block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">
+              <label className="pl-1 block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">
                 Full Name
               </label>
               <div className="relative">
@@ -84,7 +84,7 @@ const Register = () => {
             </div>
 
             <div>
-              <label className="pl-2 block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">
+              <label className="pl-1 block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">
                 Email Address
               </label>
               <div className="relative">
@@ -103,7 +103,7 @@ const Register = () => {
             </div>
 
             <div>
-              <label className="pl-2 block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">
+              <label className="pl-1 block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">
                 Password
               </label>
               <div className="relative">
@@ -122,13 +122,13 @@ const Register = () => {
             </div>
 
             <div>
-              <label className="pl-2 block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">
+              <label className="pl-1 block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">
                 Role
               </label>
               <select
                 value={role}
                 onChange={(e) => setRole(e.target.value)}
-                className="w-full px-6 py-3 bg-slate-50 border border-slate-200 rounded-2xl text-slate-900 focus:bg-white focus:outline-none focus:ring-2 focus:ring-indigo-500/30 focus:border-indigo-600 transition-all text-sm font-medium"
+                className="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-slate-900 focus:bg-white focus:outline-none focus:ring-2 focus:ring-indigo-500/30 focus:border-indigo-600 transition-all text-sm font-medium"
               >
                 <option value="student">Student</option>
                 <option value="teacher">Teacher</option>
@@ -139,14 +139,14 @@ const Register = () => {
             <button
               type="submit"
               disabled={loading}
-              className="w-auto mx-auto mt-2 py-3 px-20 bg-indigo-600 hover:bg-indigo-700 active:bg-indigo-800 text-white font-bold rounded-3xl shadow-lg shadow-indigo-600/30 transition-all flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed" >
-          
+              className="w-full mt-2 py-3 px-4 bg-indigo-600 hover:bg-indigo-700 active:bg-indigo-800 text-white font-bold rounded-xl sm:rounded-2xl shadow-lg shadow-indigo-600/30 transition-all flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed text-center"
+            >
               {loading ? (
                 <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
               ) : (
                 <>
                   <UserPlus className="w-4 h-4" />
-                  Create Account
+                  <span>Create Account</span>
                 </>
               )}
             </button>
@@ -154,10 +154,10 @@ const Register = () => {
 
           <div className="mt-6 text-center pt-4 border-t border-slate-100">
             <p className="text-xs text-slate-500 font-medium">
-              Already have an account? {'  '}
+              Already have an account?{' '}
               <Link
                 to="/login"
-                className="font-bold text-sm text-indigo-600 hover:text-rose-400 underline"
+                className="font-bold text-sm text-indigo-600 hover:text-indigo-800 underline ml-1"
               >
                 Sign In
               </Link>

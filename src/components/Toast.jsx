@@ -31,16 +31,17 @@ const Toast = ({ message, type = 'info', onClose, duration = 4000 }) => {
   const current = typeConfig[type] || typeConfig.info;
 
   return (
-    <div className="fixed bottom-6 right-6 z-50 animate-bounce-short">
+    <div className="fixed bottom-4 left-3 right-3 sm:left-auto sm:right-6 sm:bottom-6 z-50 animate-bounce-short pointer-events-none flex justify-center sm:justify-end">
       <div
-        className={`flex items-center gap-3 px-4 py-3 rounded-xl border shadow-lg ${current.bg} max-w-md`}
+        className={`flex items-center gap-3 px-3.5 sm:px-4 py-2.5 sm:py-3 rounded-xl border shadow-lg ${current.bg} max-w-md w-full sm:w-auto pointer-events-auto min-w-0`}
       >
         {current.icon}
-        <p className="text-sm font-medium flex-1">{message}</p>
+        <p className="text-xs sm:text-sm font-medium flex-1 break-words min-w-0">{message}</p>
         {onClose && (
           <button
             onClick={onClose}
-            className="text-slate-400 hover:text-slate-600 transition-colors p-1"
+            className="text-slate-400 hover:text-slate-600 transition-colors p-1 flex-shrink-0"
+            aria-label="Close notification"
           >
             <X className="w-4 h-4" />
           </button>

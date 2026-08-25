@@ -212,7 +212,7 @@ const QuestionManager = () => {
   const computedTotalMarks = questions.reduce((sum, q) => sum + (Number(q.marks) || 0), 0);
 
   return (
-    <div className="p-4 sm:p-6 lg:p-8 max-w-6xl mx-auto space-y-6">
+    <div className="p-3.5 sm:p-6 lg:p-8 max-w-6xl mx-auto space-y-6 w-full min-w-0">
       {toast && <Toast message={toast.message} type={toast.type} onClose={() => setToast(null)} />}
 
       {/* Header */}
@@ -226,20 +226,20 @@ const QuestionManager = () => {
         </Link>
       </div>
 
-      <div className="bg-white rounded-3xl border border-slate-200 shadow-xs p-6 sm:p-8 flex flex-col md:flex-row md:items-center md:justify-between gap-6">
-        <div>
-          <div className="flex items-center gap-2 mb-2">
-            <span className="text-xs font-bold uppercase tracking-wider text-indigo-600 bg-indigo-50 px-2.5 py-1 rounded-lg">
+      <div className="bg-white rounded-2xl sm:rounded-3xl border border-slate-200 shadow-xs p-4 sm:p-8 flex flex-col md:flex-row md:items-center md:justify-between gap-4 sm:gap-6">
+        <div className="min-w-0">
+          <div className="flex flex-wrap items-center gap-2 mb-2">
+            <span className="text-[11px] sm:text-xs font-bold uppercase tracking-wider text-indigo-600 bg-indigo-50 px-2.5 py-1 rounded-lg truncate max-w-full">
               {exam?.subjectId?.name} ({exam?.subjectId?.code})
             </span>
-            <span className="text-xs font-bold text-slate-500 bg-slate-100 px-2.5 py-1 rounded-lg">
+            <span className="text-[11px] sm:text-xs font-bold text-slate-500 bg-slate-100 px-2.5 py-1 rounded-lg flex-shrink-0">
               Status: {exam?.status}
             </span>
           </div>
-          <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
+          <h1 className="text-xl sm:text-3xl font-extrabold text-slate-900 tracking-tight break-words">
             {exam?.title}
           </h1>
-          <div className="flex items-center gap-4 text-xs font-semibold text-slate-500 mt-2">
+          <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs font-semibold text-slate-500 mt-2">
             <span>Questions: {questions.length}</span>
             <span>•</span>
             <span>Total Marks: {computedTotalMarks}</span>
@@ -250,10 +250,10 @@ const QuestionManager = () => {
           </div>
         </div>
 
-        <div className="flex items-center gap-3">
+        <div className="flex flex-wrap sm:flex-nowrap items-center gap-2.5 sm:gap-3 w-full md:w-auto">
           <button
             onClick={openAddModal}
-            className="inline-flex items-center gap-2 px-5 py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-sm rounded-xl shadow-md shadow-indigo-200 transition-all"
+            className="inline-flex items-center justify-center gap-2 px-4 sm:px-5 py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs sm:text-sm rounded-xl shadow-md shadow-indigo-200 transition-all flex-1 md:flex-none"
           >
             <PlusCircle className="w-4 h-4" />
             Add Question
@@ -263,7 +263,7 @@ const QuestionManager = () => {
             <button
               onClick={handlePublish}
               disabled={questions.length === 0}
-              className="inline-flex items-center gap-2 px-5 py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-sm rounded-xl shadow-md shadow-emerald-200 transition-all disabled:opacity-50"
+              className="inline-flex items-center justify-center gap-2 px-4 sm:px-5 py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs sm:text-sm rounded-xl shadow-md shadow-emerald-200 transition-all disabled:opacity-50 flex-1 md:flex-none"
             >
               <Send className="w-4 h-4" />
               Publish Exam
@@ -274,12 +274,12 @@ const QuestionManager = () => {
 
       {/* Questions List */}
       {questions.length === 0 ? (
-        <div className="bg-white rounded-3xl border border-slate-200 p-12 text-center">
+        <div className="bg-white rounded-3xl border border-slate-200 p-8 sm:p-12 text-center">
           <div className="w-16 h-16 bg-indigo-50 text-indigo-600 rounded-2xl flex items-center justify-center mx-auto mb-4">
             <HelpCircle className="w-8 h-8" />
           </div>
           <h3 className="text-lg font-bold text-slate-900 mb-1">No Questions Added Yet</h3>
-          <p className="text-sm text-slate-500 max-w-md mx-auto mb-6">
+          <p className="text-xs sm:text-sm text-slate-500 max-w-md mx-auto mb-6">
             Add multiple-choice or true/false questions to configure this exam.
           </p>
           <button
@@ -295,43 +295,47 @@ const QuestionManager = () => {
           {questions.map((q, idx) => (
             <div
               key={q._id}
-              className="bg-white rounded-2xl border border-slate-200 shadow-xs p-6 hover:border-slate-300 transition-all"
+              className="bg-white rounded-2xl border border-slate-200 shadow-xs p-4 sm:p-6 hover:border-slate-300 transition-all min-w-0"
             >
-              <div className="flex items-start justify-between gap-4 mb-3">
-                <div className="flex items-center gap-2.5">
-                  <span className="w-7 h-7 bg-indigo-50 text-indigo-600 font-bold rounded-lg flex items-center justify-center text-xs">
+              <div className="flex flex-wrap items-start justify-between gap-2 mb-3">
+                <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
+                  <span className="w-6 h-6 sm:w-7 sm:h-7 bg-indigo-50 text-indigo-600 font-bold rounded-lg flex items-center justify-center text-xs">
                     {idx + 1}
                   </span>
-                  <span className="text-xs font-semibold uppercase tracking-wider text-slate-400">
+                  <span className="text-[11px] sm:text-xs font-semibold uppercase tracking-wider text-slate-400">
                     {q.type === 'TRUE_FALSE' ? 'True / False' : 'Multiple Choice'}
                   </span>
-                  <span className="text-xs font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-md border border-emerald-100">
+                  <span className="text-[11px] sm:text-xs font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-md border border-emerald-100">
                     +{q.marks} Marks
                   </span>
                   {q.negativeMarks > 0 && (
-                    <span className="text-xs font-bold text-rose-700 bg-rose-50 px-2 py-0.5 rounded-md border border-rose-100">
+                    <span className="text-[11px] sm:text-xs font-bold text-rose-700 bg-rose-50 px-2 py-0.5 rounded-md border border-rose-100">
                       -{q.negativeMarks} Neg
                     </span>
                   )}
                 </div>
 
-                <div className="flex items-center gap-2">
+                <div className="flex items-center gap-1 sm:gap-2 flex-shrink-0">
                   <button
                     onClick={() => openEditModal(q)}
                     className="p-1.5 rounded-lg text-slate-400 hover:text-indigo-600 hover:bg-slate-100 transition-colors"
+                    aria-label="Edit question"
                   >
                     <Edit className="w-4 h-4" />
                   </button>
                   <button
                     onClick={() => setQuestionToDelete(q)}
                     className="p-1.5 rounded-lg text-slate-400 hover:text-rose-600 hover:bg-slate-100 transition-colors"
+                    aria-label="Delete question"
                   >
                     <Trash2 className="w-4 h-4" />
                   </button>
                 </div>
               </div>
 
-              <h3 className="text-base font-semibold text-slate-900 mb-4">{q.text}</h3>
+              <h3 className="text-sm sm:text-base font-semibold text-slate-900 mb-3 sm:mb-4 break-words leading-relaxed">
+                {q.text}
+              </h3>
 
               {/* Options */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 mb-3">
@@ -341,21 +345,21 @@ const QuestionManager = () => {
                   return (
                     <div
                       key={optIdx}
-                      className={`p-3 rounded-xl border text-xs font-medium flex items-center justify-between gap-2 ${
+                      className={`p-2.5 sm:p-3 rounded-xl border text-xs font-medium flex items-center justify-between gap-2 min-w-0 ${
                         isCorrect
                           ? 'bg-emerald-50 border-emerald-300 text-emerald-900 font-bold'
                           : 'bg-slate-50 border-slate-200 text-slate-700'
                       }`}
                     >
-                      <div className="flex items-center gap-2">
-                        <span className="w-5 h-5 rounded-full bg-white border flex items-center justify-center font-bold text-[10px]">
+                      <div className="flex items-center gap-2 min-w-0 flex-1">
+                        <span className="w-5 h-5 rounded-full bg-white border flex items-center justify-center font-bold text-[10px] flex-shrink-0">
                           {String.fromCharCode(65 + optIdx)}
                         </span>
-                        <span>{opt}</span>
+                        <span className="break-words min-w-0">{opt}</span>
                       </div>
                       {isCorrect && (
-                        <span className="flex items-center gap-1 text-[11px] text-emerald-700">
-                          <CheckCircle2 className="w-3.5 h-3.5" /> Correct Answer
+                        <span className="flex items-center gap-1 text-[11px] text-emerald-700 flex-shrink-0 font-bold">
+                          <CheckCircle2 className="w-3.5 h-3.5" /> Correct
                         </span>
                       )}
                     </div>
@@ -364,7 +368,7 @@ const QuestionManager = () => {
               </div>
 
               {q.explanation && (
-                <div className="p-3 bg-slate-50 rounded-xl border border-slate-100 text-xs text-slate-600">
+                <div className="p-3 bg-slate-50 rounded-xl border border-slate-100 text-xs text-slate-600 break-words leading-relaxed">
                   <strong className="text-slate-800">Explanation:</strong> {q.explanation}
                 </div>
               )}
@@ -385,7 +389,7 @@ const QuestionManager = () => {
             <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">
               Question Type
             </label>
-            <div className="grid grid-cols-2 gap-3">
+            <div className="grid grid-cols-2 gap-2 sm:gap-3">
               <button
                 type="button"
                 onClick={() => {
@@ -396,7 +400,7 @@ const QuestionManager = () => {
                     correctAnswer: ''
                   }));
                 }}
-                className={`py-2 rounded-xl text-xs font-bold border transition-all ${
+                className={`py-2 px-2 rounded-xl text-xs font-bold border transition-all truncate ${
                   formData.type === 'MCQ'
                     ? 'bg-indigo-600 text-white border-indigo-600'
                     : 'bg-slate-50 text-slate-700 border-slate-200'
@@ -414,7 +418,7 @@ const QuestionManager = () => {
                     correctAnswer: 'True'
                   }));
                 }}
-                className={`py-2 rounded-xl text-xs font-bold border transition-all ${
+                className={`py-2 px-2 rounded-xl text-xs font-bold border transition-all truncate ${
                   formData.type === 'TRUE_FALSE'
                     ? 'bg-indigo-600 text-white border-indigo-600'
                     : 'bg-slate-50 text-slate-700 border-slate-200'
@@ -435,7 +439,7 @@ const QuestionManager = () => {
               rows="3"
               placeholder="Type your question here..."
               required
-              className="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm font-medium focus:bg-white focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-600"
+              className="w-full px-3.5 py-2.5 sm:px-4 bg-slate-50 border border-slate-200 rounded-xl text-sm font-medium focus:bg-white focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-600"
             />
           </div>
 
@@ -444,7 +448,7 @@ const QuestionManager = () => {
             <div className="space-y-2">
               <div className="flex items-center justify-between">
                 <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider">
-                  Options & Correct Answer Selection *
+                  Options & Correct Answer *
                 </label>
                 {formData.options.length < 6 && (
                   <button
@@ -459,7 +463,7 @@ const QuestionManager = () => {
 
               <div className="space-y-2">
                 {formData.options.map((opt, idx) => (
-                  <div key={idx} className="flex items-center gap-2">
+                  <div key={idx} className="flex items-center gap-2 min-w-0">
                     {/* Radio to mark correct */}
                     <input
                       type="radio"
@@ -467,7 +471,7 @@ const QuestionManager = () => {
                       checked={formData.correctAnswer === opt && opt.trim() !== ''}
                       onChange={() => setFormData((prev) => ({ ...prev, correctAnswer: opt }))}
                       disabled={!opt.trim()}
-                      className="w-4 h-4 text-emerald-600 focus:ring-emerald-500 cursor-pointer"
+                      className="w-4 h-4 text-emerald-600 focus:ring-emerald-500 cursor-pointer flex-shrink-0"
                       title="Select as Correct Answer"
                     />
                     <input
@@ -476,13 +480,13 @@ const QuestionManager = () => {
                       onChange={(e) => handleOptionChange(idx, e.target.value)}
                       placeholder={`Option ${String.fromCharCode(65 + idx)}`}
                       required
-                      className="flex-1 px-3.5 py-2 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:bg-white focus:outline-none focus:ring-2 focus:ring-indigo-500/20"
+                      className="flex-1 min-w-0 px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:bg-white focus:outline-none focus:ring-2 focus:ring-indigo-500/20"
                     />
                     {formData.options.length > 2 && (
                       <button
                         type="button"
                         onClick={() => removeOptionField(idx)}
-                        className="p-2 text-slate-400 hover:text-rose-600 rounded-lg hover:bg-slate-100"
+                        className="p-2 text-slate-400 hover:text-rose-600 rounded-lg hover:bg-slate-100 flex-shrink-0"
                       >
                         <X className="w-4 h-4" />
                       </button>
@@ -520,7 +524,7 @@ const QuestionManager = () => {
             </div>
           )}
 
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
             <div>
               <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">
                 Question Marks *
@@ -532,7 +536,7 @@ const QuestionManager = () => {
                 value={formData.marks}
                 onChange={(e) => setFormData((prev) => ({ ...prev, marks: Number(e.target.value) }))}
                 required
-                className="w-full px-4 py-2 bg-slate-50 border border-slate-200 rounded-xl text-sm"
+                className="w-full px-3.5 py-2 bg-slate-50 border border-slate-200 rounded-xl text-sm"
               />
             </div>
             <div>
@@ -545,7 +549,7 @@ const QuestionManager = () => {
                 min="0"
                 value={formData.negativeMarks}
                 onChange={(e) => setFormData((prev) => ({ ...prev, negativeMarks: Number(e.target.value) }))}
-                className="w-full px-4 py-2 bg-slate-50 border border-slate-200 rounded-xl text-sm"
+                className="w-full px-3.5 py-2 bg-slate-50 border border-slate-200 rounded-xl text-sm"
               />
             </div>
           </div>
@@ -559,22 +563,22 @@ const QuestionManager = () => {
               onChange={(e) => setFormData((prev) => ({ ...prev, explanation: e.target.value }))}
               rows="2"
               placeholder="Why is this the correct answer..."
-              className="w-full px-4 py-2 bg-slate-50 border border-slate-200 rounded-xl text-sm"
+              className="w-full px-3.5 py-2 bg-slate-50 border border-slate-200 rounded-xl text-sm"
             />
           </div>
 
-          <div className="flex items-center justify-end gap-3 pt-4 border-t border-slate-100">
+          <div className="flex flex-col-reverse sm:flex-row items-stretch sm:items-center justify-end gap-2 sm:gap-3 pt-4 border-t border-slate-100">
             <button
               type="button"
               onClick={() => setIsModalOpen(false)}
-              className="px-4 py-2 text-sm font-semibold text-slate-600 hover:bg-slate-100 rounded-xl"
+              className="px-4 py-2.5 text-sm font-semibold text-slate-600 hover:bg-slate-100 rounded-xl text-center"
             >
               Cancel
             </button>
             <button
               type="submit"
               disabled={savingQuestion}
-              className="px-5 py-2 text-sm font-bold text-white bg-indigo-600 hover:bg-indigo-700 rounded-xl shadow-xs disabled:opacity-50"
+              className="px-5 py-2.5 text-sm font-bold text-white bg-indigo-600 hover:bg-indigo-700 rounded-xl shadow-xs disabled:opacity-50 text-center"
             >
               {savingQuestion ? 'Saving...' : editingQuestion ? 'Update Question' : 'Save Question'}
             </button>
@@ -589,21 +593,21 @@ const QuestionManager = () => {
         title="Delete Question"
       >
         <div className="space-y-4">
-          <p className="text-sm text-slate-600">
+          <p className="text-sm text-slate-600 break-words">
             Are you sure you want to delete this question? This action cannot be undone.
           </p>
-          <div className="flex items-center justify-end gap-3 pt-4 border-t border-slate-100">
+          <div className="flex flex-col-reverse sm:flex-row items-stretch sm:items-center justify-end gap-2 sm:gap-3 pt-4 border-t border-slate-100">
             <button
               type="button"
               onClick={() => setQuestionToDelete(null)}
-              className="px-4 py-2 text-sm font-semibold text-slate-600 hover:bg-slate-100 rounded-xl"
+              className="px-4 py-2 text-sm font-semibold text-slate-600 hover:bg-slate-100 rounded-xl text-center"
             >
               Cancel
             </button>
             <button
               type="button"
               onClick={handleDeleteQuestion}
-              className="px-4 py-2 text-sm font-bold text-white bg-rose-600 hover:bg-rose-700 rounded-xl"
+              className="px-4 py-2 text-sm font-bold text-white bg-rose-600 hover:bg-rose-700 rounded-xl text-center"
             >
               Delete
             </button>

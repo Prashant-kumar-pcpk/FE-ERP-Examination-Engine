@@ -35,31 +35,36 @@ const Navbar = ({ onToggleSidebar }) => {
   };
 
   return (
-    <header className="sticky top-0 z-30 bg-white/90 backdrop-blur-md border-b border-slate-200">
-      <div className="px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
+    <header className="sticky top-0 w-full z-30 bg-white/90 backdrop-blur-md border-b border-slate-200">
+      <div className="w-full px-3 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between h-16 w-full gap-2">
           {/* Left: Sidebar Toggle & Brand */}
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2 sm:gap-3 min-w-0">
             {onToggleSidebar && (
               <button
                 onClick={onToggleSidebar}
-                className="lg:hidden p-2 rounded-xl text-slate-500 hover:bg-slate-100 transition-colors"
+                className="lg:hidden p-2 rounded-xl text-slate-600 hover:bg-slate-100 transition-colors flex-shrink-0"
                 aria-label="Toggle Navigation"
               >
                 <Menu className="w-5 h-5" />
               </button>
             )}
 
-            <Link to="/dashboard" className="flex items-center gap-2.5 group">
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-indigo-600 to-indigo-400 flex items-center justify-center text-white shadow-md shadow-indigo-200 group-hover:scale-105 transition-transform">
-                <GraduationCap className="w-6 h-6" />
+            <Link to="/dashboard" className="flex items-center gap-2 sm:gap-2.5 group min-w-0">
+              <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-gradient-to-tr from-indigo-600 to-indigo-400 flex items-center justify-center text-white shadow-md shadow-indigo-200 group-hover:scale-105 transition-transform flex-shrink-0">
+                <GraduationCap className="w-5 h-5 sm:w-6 sm:h-6" />
               </div>
-              <div className="hidden sm:block">
+              <div className="hidden sm:block min-w-0">
                 <span className="text-base font-bold tracking-tight text-slate-900 block leading-tight">
-                   ERP
+                  ERP
                 </span>
                 <span className="text-xs font-semibold text-indigo-600 block tracking-wider uppercase">
                   Examination Engine
+                </span>
+              </div>
+              <div className="sm:hidden block">
+                <span className="text-sm font-bold tracking-tight text-slate-900 block leading-tight">
+                  ERP Exam
                 </span>
               </div>
             </Link>
@@ -67,9 +72,9 @@ const Navbar = ({ onToggleSidebar }) => {
 
           {/* Right: User Menu */}
           {user && (
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-2 sm:gap-3 flex-shrink-0">
               <div className="hidden md:flex flex-col items-end">
-                <span className="text-sm font-semibold text-slate-800">{user.name}</span>
+                <span className="text-sm font-semibold uppercase text-slate-800">{user.name}</span>
                 <span className="text-xs text-slate-500">{user.email}</span>
               </div>
 
@@ -85,12 +90,12 @@ const Navbar = ({ onToggleSidebar }) => {
 
                 {profileMenuOpen && (
                   <div
-                    className="absolute right-0 mt-2 w-56 bg-white rounded-l shadow-xl border border-slate-100 py-2 z-50 animate-in fade-in slide-in-from-top-2"
+                    className="absolute right-0 mt-2 w-56 max-w-[calc(100vw-1.5rem)] bg-white rounded-2xl shadow-xl border border-slate-100 py-2 z-50 animate-in fade-in slide-in-from-top-2"
                     onMouseLeave={() => setProfileMenuOpen(false)}
                   >
                     <div className="px-4 py-2.5 border-b border-slate-100">
                       <p className="text-xs text-slate-400 font-medium uppercase tracking-wider">Signed in as</p>
-                      <p className="text-sm px-2 font-bold text-slate-800 truncate">{user.name}</p>
+                      <p className="text-sm font-bold text-slate-800 truncate">{user.name}</p>
                       <span
                         className={`inline-block mt-1 text-[11px] font-semibold uppercase tracking-wider px-2 py-0.5 rounded-full border ${getRoleBadge(
                           user.role
@@ -103,7 +108,7 @@ const Navbar = ({ onToggleSidebar }) => {
                     <Link
                       to="/profile"
                       onClick={() => setProfileMenuOpen(false)}
-                      className="flex items-center gap-2.5 px-4 py-2 text-sm text-slate-700 hover:bg-slate-50 hover:text-indigo-600 transition-colors"
+                      className="flex items-center gap-2.5 px-4 py-2.5 text-sm text-slate-700 hover:bg-slate-50 hover:text-indigo-600 transition-colors"
                     >
                       <User className="w-4 h-4 text-slate-400" />
                       My Profile
@@ -114,7 +119,7 @@ const Navbar = ({ onToggleSidebar }) => {
                         setProfileMenuOpen(false);
                         handleLogout();
                       }}
-                      className="w-full flex items-center gap-2.5 px-4 py-2 text-sm text-rose-600 hover:bg-rose-50 transition-colors"
+                      className="w-full flex items-center gap-2.5 px-4 py-2.5 text-sm text-rose-600 hover:bg-rose-50 transition-colors text-left"
                     >
                       <LogOut className="w-4 h-4" />
                       Logout

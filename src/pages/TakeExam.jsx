@@ -215,38 +215,38 @@ const TakeExam = () => {
   const unansweredCount = questions.length - answeredCount;
 
   return (
-    <div className="min-h-screen bg-slate-100 flex flex-col">
+    <div className="min-h-screen bg-slate-100 flex flex-col w-full overflow-x-hidden">
       {toast && <Toast message={toast.message} type={toast.type} onClose={() => setToast(null)} />}
 
       {/* Exam Header Bar */}
-      <header className="sticky top-0 z-30 bg-white border-b border-slate-200 shadow-xs">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-4">
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-indigo-600 text-white flex items-center justify-center shadow-md shadow-indigo-200 flex-shrink-0">
-              <GraduationCap className="w-6 h-6" />
+      <header className="sticky top-0 z-30 bg-white border-b border-slate-200 shadow-xs w-full">
+        <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-2.5 sm:py-0 min-h-16 sm:h-20 flex items-center justify-between gap-2 sm:gap-4">
+          <div className="flex items-center gap-2 sm:gap-3 min-w-0 flex-1">
+            <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-indigo-600 text-white flex items-center justify-center shadow-md shadow-indigo-200 flex-shrink-0">
+              <GraduationCap className="w-5 h-5 sm:w-6 sm:h-6" />
             </div>
-            <div>
-              <h1 className="text-base sm:text-lg font-bold text-slate-900 line-clamp-1">
+            <div className="min-w-0 flex-1">
+              <h1 className="text-sm sm:text-base md:text-lg font-bold text-slate-900 truncate">
                 {exam?.title}
               </h1>
-              <span className="text-xs font-semibold text-indigo-600 uppercase tracking-wider">
+              <span className="text-[10px] sm:text-xs font-semibold text-indigo-600 uppercase tracking-wider block truncate">
                 {exam?.subject?.name || 'General Assessment'}
               </span>
             </div>
           </div>
 
           {/* Real-time Synced Countdown Timer */}
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-2 sm:gap-4 flex-shrink-0">
             <Timer initialSeconds={remainingSeconds} onExpire={handleTimerExpired} />
           </div>
         </div>
       </header>
 
       {/* Main Examination Viewport */}
-      <main className="flex-1 max-w-7xl w-full mx-auto p-4 sm:p-6 lg:p-8">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 items-start">
+      <main className="flex-1 max-w-7xl w-full mx-auto p-3.5 sm:p-6 lg:p-8">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-6 items-start">
           {/* Left / Center 2 Columns: Question Card */}
-          <div className="lg:col-span-2 space-y-4">
+          <div className="lg:col-span-2 space-y-4 min-w-0">
             <QuestionCard
               question={currentQuestion}
               index={currentIndex}
@@ -263,13 +263,13 @@ const TakeExam = () => {
 
             {/* Quick Helper Notes */}
             <div className="bg-indigo-50/50 border border-indigo-100 rounded-xl p-3 text-xs text-indigo-800 flex items-center gap-2 font-medium">
-              <span className="w-2 h-2 rounded-full bg-indigo-500 animate-ping" />
+              <span className="w-2 h-2 rounded-full bg-indigo-500 animate-ping flex-shrink-0" />
               <span>Answers are automatically saved securely to the server in real-time.</span>
             </div>
           </div>
 
           {/* Right Column: Question Navigator */}
-          <div className="lg:col-span-1">
+          <div className="lg:col-span-1 min-w-0">
             <QuestionNavigator
               questions={questions}
               currentIndex={currentIndex}
@@ -289,23 +289,23 @@ const TakeExam = () => {
         title="Confirm Exam Submission"
       >
         <div className="space-y-5">
-          <p className="text-sm text-slate-600">
+          <p className="text-sm text-slate-600 break-words">
             Are you sure you want to finalize and submit your examination? Once submitted, answers cannot be modified and your result will be evaluated immediately.
           </p>
 
           {/* Summary matrix */}
-          <div className="grid grid-cols-3 gap-3 p-4 bg-slate-50 rounded-2xl border border-slate-100 text-center">
-            <div className="p-2">
-              <span className="text-xs font-bold uppercase text-slate-400 block">Answered</span>
-              <span className="text-xl font-extrabold text-emerald-600">{answeredCount}</span>
+          <div className="grid grid-cols-3 gap-2 sm:gap-3 p-3 sm:p-4 bg-slate-50 rounded-2xl border border-slate-100 text-center">
+            <div className="p-1 sm:p-2">
+              <span className="text-[10px] sm:text-xs font-bold uppercase text-slate-400 block truncate">Answered</span>
+              <span className="text-lg sm:text-xl font-extrabold text-emerald-600">{answeredCount}</span>
             </div>
-            <div className="p-2">
-              <span className="text-xs font-bold uppercase text-slate-400 block">Unanswered</span>
-              <span className="text-xl font-extrabold text-slate-700">{unansweredCount}</span>
+            <div className="p-1 sm:p-2">
+              <span className="text-[10px] sm:text-xs font-bold uppercase text-slate-400 block truncate">Unanswered</span>
+              <span className="text-lg sm:text-xl font-extrabold text-slate-700">{unansweredCount}</span>
             </div>
-            <div className="p-2">
-              <span className="text-xs font-bold uppercase text-slate-400 block">For Review</span>
-              <span className="text-xl font-extrabold text-purple-600">{reviewCount}</span>
+            <div className="p-1 sm:p-2">
+              <span className="text-[10px] sm:text-xs font-bold uppercase text-slate-400 block truncate">For Review</span>
+              <span className="text-lg sm:text-xl font-extrabold text-purple-600">{reviewCount}</span>
             </div>
           </div>
 
@@ -316,12 +316,12 @@ const TakeExam = () => {
             </div>
           )}
 
-          <div className="flex items-center justify-end gap-3 pt-4 border-t border-slate-100">
+          <div className="flex flex-col-reverse sm:flex-row items-stretch sm:items-center justify-end gap-2.5 sm:gap-3 pt-4 border-t border-slate-100">
             <button
               type="button"
               disabled={submitting}
               onClick={() => setIsSubmitModalOpen(false)}
-              className="px-4 py-2 text-sm font-semibold text-slate-600 hover:bg-slate-100 rounded-xl transition-colors"
+              className="px-4 py-2.5 text-sm font-semibold text-slate-600 hover:bg-slate-100 rounded-xl transition-colors text-center"
             >
               Resume Test
             </button>
@@ -329,7 +329,7 @@ const TakeExam = () => {
               type="button"
               disabled={submitting}
               onClick={handleFinalSubmit}
-              className="px-6 py-2.5 text-sm font-bold text-white bg-emerald-600 hover:bg-emerald-700 rounded-xl shadow-md shadow-emerald-200 transition-all flex items-center gap-2 disabled:opacity-50"
+              className="px-6 py-2.5 text-sm font-bold text-white bg-emerald-600 hover:bg-emerald-700 rounded-xl shadow-md shadow-emerald-200 transition-all flex items-center justify-center gap-2 disabled:opacity-50 text-center"
             >
               {submitting ? (
                 <>

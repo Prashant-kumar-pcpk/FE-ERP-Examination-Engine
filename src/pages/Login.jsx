@@ -79,21 +79,21 @@ const Login = () => {
         </div>
 
         {/* Login Card */}
-        <div className="  max-w-6xl bg-indigo-100 backdrop-blur-md rounded-3xl p-6 sm:p-8 shadow-2xl border border-slate-800/10">
-          <h2 className="text-xl font-bold text-slate-900 mb-6">
+        <div className="w-full bg-indigo-100 backdrop-blur-md rounded-2xl sm:rounded-3xl p-5 sm:p-8 shadow-2xl border border-slate-800/10 min-w-0">
+          <h2 className="text-lg sm:text-xl font-bold text-slate-900 mb-5 sm:mb-6">
             Sign In to Your Account
           </h2>
 
           {error && (
-            <div className="mb-5 p-3.5 bg-rose-50 border border-rose-200 text-rose-700 text-sm rounded-xl font-medium flex items-center gap-2">
+            <div className="mb-5 p-3.5 bg-rose-50 border border-rose-200 text-rose-700 text-sm rounded-xl font-medium flex items-center gap-2 break-words">
               <span className="w-2 h-2 rounded-full bg-rose-500 flex-shrink-0" />
-              {error}
+              <span>{error}</span>
             </div>
           )}
 
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
-              <label className="pl-2 block text-xs font-bold text-slate-700  tracking-wider mb-2">
+              <label className="pl-1 block text-xs font-bold text-slate-700 tracking-wider mb-1.5">
                 Email Address
               </label>
               <div className="relative">
@@ -112,7 +112,7 @@ const Login = () => {
             </div>
 
             <div>
-              <label className="pl-2 block text-xs font-bold text-slate-700 tracking-wider mb-2">
+              <label className="pl-1 block text-xs font-bold text-slate-700 tracking-wider mb-1.5">
                 Password
               </label>
               <div className="relative">
@@ -133,44 +133,45 @@ const Login = () => {
             <button
               type="submit"
               disabled={loading}
-            className="w-auto mx-auto mt-2 py-3 px-20 bg-indigo-600 hover:bg-indigo-700 active:bg-indigo-800 text-white font-bold rounded-3xl shadow-lg shadow-indigo-600/30 transition-all flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed" >
+              className="w-full mt-2 py-3 px-4 bg-indigo-600 hover:bg-indigo-700 active:bg-indigo-800 text-white font-bold rounded-xl sm:rounded-2xl shadow-lg shadow-indigo-600/30 transition-all flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed text-center"
+            >
               {loading ? (
                 <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
               ) : (
                 <>
-                  <LogIn className="w-7 h-4" />
-                  Sign In
+                  <LogIn className="w-4 h-4" />
+                  <span>Sign In</span>
                 </>
               )}
             </button>
           </form>
 
           {/* Demo Credentials Section for College Evaluator convenience */}
-          <div className="mt-6 pt-5 border-t border-slate-100">
-            <div className="flex items-center gap-1.5 text-xs font-semibold text-slate-500 mb-3">
-              <Sparkles className="w-3.5 h-3.5 text-amber-500" />
+          <div className="mt-6 pt-5 border-t border-slate-200/60">
+            <div className="flex items-center gap-1.5 text-xs font-semibold text-slate-600 mb-3">
+              <Sparkles className="w-3.5 h-3.5 text-amber-500 flex-shrink-0" />
               <span>Quick Demo Logins (Click to Autofill):</span>
             </div>
 
-            <div className="grid grid-cols-3 gap-2">
+            <div className="grid grid-cols-3 gap-1.5 sm:gap-2">
               <button
                 type="button"
                 onClick={() => setDemoCredentials('admin')}
-                className="py-2 px-2.5 bg-purple-50 hover:bg-purple-200 text-purple-700 text-xs font-bold rounded-lg border border-purple-400 transition-colors"
+                className="py-2 px-1 sm:px-2.5 bg-purple-50 hover:bg-purple-200 text-purple-700 text-xs font-bold rounded-lg border border-purple-400 transition-colors text-center truncate"
               >
                 Admin
               </button>
               <button
                 type="button"
                 onClick={() => setDemoCredentials('teacher')}
-                className="py-2 px-2.5 bg-indigo-50 hover:bg-indigo-200 text-indigo-700 text-xs font-bold rounded-lg border border-indigo-400 transition-colors"
+                className="py-2 px-1 sm:px-2.5 bg-indigo-50 hover:bg-indigo-200 text-indigo-700 text-xs font-bold rounded-lg border border-indigo-400 transition-colors text-center truncate"
               >
                 Teacher
               </button>
               <button
                 type="button"
                 onClick={() => setDemoCredentials('student')}
-                className="py-2 px-2.5 bg-emerald-50 hover:bg-emerald-200 text-emerald-700 text-xs font-bold rounded-lg border border-emerald-400 transition-colors"
+                className="py-2 px-1 sm:px-2.5 bg-emerald-50 hover:bg-emerald-200 text-emerald-700 text-xs font-bold rounded-lg border border-emerald-400 transition-colors text-center truncate"
               >
                 Student
               </button>
@@ -179,13 +180,13 @@ const Login = () => {
 
           {/* Registration link */}
           <div className="mt-6 text-center">
-            <p className="text-xs text-slate-500 font-medium">
+            <p className="text-xs text-slate-600 font-medium">
               Don't have an account?{' '}
               <Link
                 to="/register"
-                className="font-bold text-sm text-indigo-600 hover:text-red-400 underline"
+                className="font-bold text-sm text-indigo-600 hover:text-indigo-800 underline ml-1"
               >
-                 Register as Student
+                Register as Student
               </Link>
             </p>
           </div>

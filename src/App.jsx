@@ -26,11 +26,11 @@ const AppLayout = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   return (
-    <div className="min-h-screen bg-slate-50 flex flex-col">
+    <div className="min-h-screen bg-slate-50 flex flex-col w-full overflow-x-hidden">
       <Navbar onToggleSidebar={() => setSidebarOpen(true)} />
-      <div className="flex flex-1">
+      <div className="flex flex-1 w-full min-w-0">
         <Sidebar isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} />
-        <main className="flex-1 lg:pl-64 transition-all duration-200">
+        <main className="flex-1 min-w-0 w-full lg:pl-64 transition-all duration-200 overflow-x-hidden">
           <Outlet />
         </main>
       </div>

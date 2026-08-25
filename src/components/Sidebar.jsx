@@ -66,38 +66,39 @@ const Sidebar = ({ isOpen, onClose }) => {
 
       {/* Sidebar container */}
       <aside
-        className={`fixed top-0 left-0 bottom-0 z-40 w-64 bg-white border-r border-slate-200 flex flex-col transition-transform duration-300 ease-in-out lg:translate-x-0 ${
-          isOpen ? 'translate-x-0' : '-translate-x-full'
+        className={`fixed top-0 left-0 bottom-0 z-40 w-64 max-w-[85vw] bg-white border-r border-slate-200 flex flex-col transition-transform duration-300 ease-in-out lg:translate-x-0 ${
+          isOpen ? 'translate-x-0 shadow-2xl' : '-translate-x-full'
         }`}
       >
         {/* Header with logo & close */}
-        <div className="h-16 flex items-center justify-between px-6 border-b border-slate-100">
-          <div className="flex items-center gap-2.5">
-            <div className="w-9 h-9 rounded-xl bg-indigo-600 flex items-center justify-center text-white shadow-md shadow-indigo-200">
+        <div className="h-16 flex items-center justify-between px-5 border-b border-slate-100">
+          <div className="flex items-center gap-2.5 min-w-0">
+            <div className="w-9 h-9 rounded-xl bg-indigo-600 flex items-center justify-center text-white shadow-md shadow-indigo-200 flex-shrink-0">
               <GraduationCap className="w-5 h-5" />
             </div>
-            <div>
-              <span className="text-sm font-bold text-slate-900 block leading-tight"> ERP</span>
-              <span className="text-[10px] font-semibold text-indigo-600 block uppercase tracking-wider">Examination System</span>
+            <div className="min-w-0">
+              <span className="text-sm font-bold text-slate-900 block leading-tight truncate">ERP System</span>
+              <span className="text-[10px] font-semibold text-indigo-600 block uppercase tracking-wider truncate">Examination Engine</span>
             </div>
           </div>
           <button
             onClick={onClose}
-            className="lg:hidden p-1.5 rounded-lg text-slate-400 hover:bg-slate-100 transition-colors"
+            className="lg:hidden p-1.5 rounded-lg text-slate-400 hover:bg-slate-100 hover:text-slate-700 transition-colors flex-shrink-0"
+            aria-label="Close Sidebar"
           >
             <X className="w-5 h-5" />
           </button>
         </div>
 
         {/* User preview */}
-        <div className="p-4 mx-3 my-3 bg-slate-300 rounded-3xl border border-slate-100">
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-full bg-indigo-100 text-indigo-600 flex items-center justify-center font-bold text-sm">
+        <div className="p-3.5 mx-3 my-3 bg-slate-50 rounded-2xl border border-slate-200/80">
+          <div className="flex items-center gap-2.5">
+            <div className="w-9 h-9 rounded-full bg-indigo-100 text-indigo-600 flex items-center justify-center font-bold text-sm flex-shrink-0">
               {user?.name ? user.name.charAt(0).toUpperCase() : 'U'}
             </div>
             <div className="flex-1 min-w-0">
-              <p className="text-xs px-3 font-bold text-slate-800 truncate">{user?.name}</p>
-              <span className="inline-block text-[10px] font-bold text-slate-600 uppercase tracking-wider bg-slate-50 px-1.5 py-0.5 rounded-full">
+              <p className="text-xs font-bold text-slate-800 truncate">{user?.name}</p>
+              <span className="inline-block text-[10px] font-bold text-indigo-700 uppercase tracking-wider bg-indigo-50 border border-indigo-100 px-2 py-0.5 rounded-full mt-0.5">
                 {user?.role}
               </span>
             </div>
