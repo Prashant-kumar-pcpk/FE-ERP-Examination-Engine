@@ -1,4 +1,4 @@
-# School ERP - Online Examination Engine (MERN Stack)
+#  ERP - Online Examination Engine (MERN Stack)
 
 A production-grade, full-stack ** ERP Online Examination Engine** built with MongoDB, Express.js, React, Node.js, Tailwind CSS, and JWT authentication. Engineered as a robust college-level examination management platform with 100% server-side evaluation, dynamic countdown timer synchronization, student question randomization, real-time auto-saving, and role-based access control.
 
